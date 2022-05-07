@@ -8,7 +8,9 @@ const LogModel = require("./models/logs")
 // const {schema} = require('/models/logs')
 const logRouter = require('./routes/createLog')
 
+// DO I NEED THIS IN SERVER.JS FILE SINCE I HAVE IT IN THE OTHER FILES??????????????????????????????????????
 const createLog = require("./routes/createLog")
+const seedRouter = require('./models/logs')
 
 const mongoConfig = require ("./config")
 require("dotenv").config()
@@ -23,7 +25,7 @@ server.use(express.json())
 server.use(bodyParser.json())
 
 server.use('/createLog', logRouter)
-
+server.use('/seed', seedRouter)
 
 
 
