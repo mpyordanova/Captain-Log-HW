@@ -8,6 +8,9 @@ const LogModel = require("./models/logs")
 // const {schema} = require('/models/logs')
 const logRouter = require('./routes/createLog')
 const indexRouter = express.Router() 
+const FoodModel = require('/models/foodschema')
+
+const FoodRouter = require('./routes/controller/foodlogs')
 
 // DO I NEED THIS IN SERVER.JS FILE SINCE I HAVE IT IN THE OTHER FILES??????????????????????????????????????
 const createLog = require("./routes/createLog")
@@ -28,6 +31,7 @@ server.use(bodyParser.json())
 server.use('/createLog', logRouter)
 server.use('/seed', seedRouter)
 server.use('/', indexRouter)
+server.use('/controller/foodlogs', FoodRouter)
 
 // index route so respond will show the full list of captain's log
 server.get('/index/:id', (req, res)=>{
@@ -35,12 +39,8 @@ server.get('/index/:id', (req, res)=>{
    res.status(200).json(LogEntry)
 })
 
-// Delete route
-server.delete('/', (req, res)=>{
-    res.status(200).json({message:'Deleted'})
-})
 
-// put route 
+
 
 // routes.Do we need it????????????????????????????????????????????????
 server.get("/", (req, res) =>{

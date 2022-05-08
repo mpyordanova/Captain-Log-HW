@@ -33,9 +33,10 @@ logRouter.delete('createLog/:id', (req, res)=>{
             if(err){
                 res.status(404).json({mesage: err.message})
             }else{
-                res.status(204).json({});
+                res.status(204).json({})
             }
-        })
+        }
+    )
 
 })
 
