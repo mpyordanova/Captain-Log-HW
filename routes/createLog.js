@@ -12,10 +12,9 @@ const LogEntry = [
     
 ]
 
-// insert array ships
 
     
-// update some mistakes in the initial entry
+// update entry
 logRouter.put('/update/:id', (req, res)=>{
     const updateLogEntry = req. body
     LogModel.updateOne({_id: req.params.id}, updateLogEntry, (err, updateLogEntry)=>{
@@ -27,12 +26,18 @@ logRouter.put('/update/:id', (req, res)=>{
     })
 })
 
+// Delete route
+logRouter.delete('createLog/:id', (req, res)=>{
+    LogModel.deleteOne({_id:req.params.id},
+        (err, deletedLogEntry)=>{
+            if(err){
+                res.status(404).json({mesage: err.message})
+            }else{
+                res.status(204).json({});
+            }
+        })
 
-// logRouter.create("/new", (req, res)=>{
-//     newShips=req.body
-// })
-
-
+})
 
 
 module.exports = logRouter;
